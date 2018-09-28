@@ -1,28 +1,33 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <HelloWorld msg="Teste"/>
+    <ButtonCounter />
+    <BlogPost v-for="post in posts" v-bind:key="post.id" v-bind:mensagem="post.mensagem"/>
   </div>
+
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
+import ButtonCounter from './components/ButtonCounter.vue'
+import BlogPost from './components/BlogPost.vue'
 
 export default {
+  data(){
+    return{
+      posts: [
+        { id: 1, mensagem: 'Minha jornada com Vue' },
+        { id: 2, mensagem: 'Postagens Vue' },
+        { id: 3, mensagem: 'Porque Vue é tão divertido' }
+      ]
+    }
+  },
   name: 'app',
   components: {
-    HelloWorld
+    HelloWorld,
+    ButtonCounter,
+    BlogPost
   }
 }
+             
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
